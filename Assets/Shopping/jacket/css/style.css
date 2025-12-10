@@ -449,6 +449,5 @@ footer ul li a:hover {
 @media (max-width: 576px) {
   /* Hero */
   h1.hero-title{
-    font-size: 2rem;
   }
 }
