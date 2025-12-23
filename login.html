@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: #000;
@@ -479,6 +480,77 @@
                 <div class="switch-form">
                     Don't have an account? <a onclick="showRegister()">Sign Up</a>
                 </div>
+                
+                <div style="text-align: center; margin-top: 16px;">
+                    <a onclick="showForgotPassword()" style="color: rgba(255, 255, 255, 0.5); font-size: 13px; cursor: pointer; text-decoration: none;">
+                        Forgot Password?
+                    </a>
+                </div>
+            </div>
+
+            <!-- Form Forgot Password -->
+            <div id="forgotPasswordForm" class="form-container hidden">
+                <h2>Reset Password</h2>
+                <p class="subtitle">Enter your email to receive reset code</p>
+                
+                <div class="success-message" id="resetSuccess"></div>
+                
+                <form id="forgotPasswordFormElement">
+                    <div class="input-group">
+                        <input type="email" id="forgotEmail" placeholder="Email address" required>
+                        <div class="error" id="forgotEmailError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Reset Code</button>
+                </form>
+                
+                <div class="switch-form">
+                    Remember your password? <a onclick="showLogin()">Sign In</a>
+                </div>
+            </div>
+
+            <!-- Form Reset Password -->
+            <div id="resetPasswordForm" class="form-container hidden">
+                <h2>Enter New Password</h2>
+                <p class="subtitle">Code has been sent to your email</p>
+                
+                <form id="resetPasswordFormElement">
+                    <div class="input-group">
+                        <input type="text" id="resetCode" placeholder="Enter 6-digit code" maxlength="6" required>
+                        <div class="error" id="resetCodeError"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="password-wrapper">
+                            <input type="password" id="newPassword" placeholder="New password" required>
+                            <span class="toggle-password" onclick="togglePassword('newPassword')">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
+                        <div class="strength-meter">
+                            <div class="strength-meter-fill" id="strengthMeterReset"></div>
+                        </div>
+                        <div class="strength-text" id="strengthTextReset"></div>
+                        <div class="error" id="newPasswordError"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
+                            <span class="toggle-password" onclick="togglePassword('confirmNewPassword')">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
+                        <div class="error" id="confirmNewPasswordError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Reset Password</button>
+                </form>
+                
+                <div class="switch-form">
+                    <a onclick="showForgotPassword()" style="cursor: pointer;">Resend Code</a> • 
+                    <a onclick="showLogin()">Back to Sign In</a>
+                </div>
             </div>
 
             <!-- Form Register -->
@@ -582,7 +654,8 @@
         </div>
     </div>
 
-    <script>
+    <script src="Assets/Shopping/js/auth.js"></script>
+    <!-- <script>
         // Database simulation
         class Database {
             constructor() {
@@ -615,6 +688,19 @@
         const db = new Database();
         let currentUser = null;
         let isGuest = false;
+        let resetCodeData = null; // Store reset code temporarily
+
+        function showForgotPassword() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('registerForm').classList.add('hidden');
+            document.getElementById('resetPasswordForm').classList.add('hidden');
+            document.getElementById('forgotPasswordForm').classList.remove('hidden');
+        }
+
+        function showResetPassword() {
+            document.getElementById('forgotPasswordForm').classList.add('hidden');
+            document.getElementById('resetPasswordForm').classList.remove('hidden');
+        }
 
         function togglePassword(fieldId) {
             const field = document.getElementById(fieldId);
@@ -638,6 +724,8 @@
 
         function showLogin() {
             document.getElementById('registerForm').classList.add('hidden');
+            document.getElementById('forgotPasswordForm').classList.add('hidden');
+            document.getElementById('resetPasswordForm').classList.add('hidden');
             document.getElementById('loginForm').classList.remove('hidden');
         }
 
@@ -673,6 +761,35 @@
         document.getElementById('registerPassword').addEventListener('input', function() {
             checkPasswordStrength(this.value);
         });
+
+        document.getElementById('newPassword').addEventListener('input', function() {
+            checkPasswordStrengthReset(this.value);
+        });
+
+        function checkPasswordStrengthReset(password) {
+            let strength = 0;
+            const meter = document.getElementById('strengthMeterReset');
+            const text = document.getElementById('strengthTextReset');
+            
+            if (password.length >= 8) strength += 25;
+            if (password.match(/[a-z]+/)) strength += 25;
+            if (password.match(/[A-Z]+/)) strength += 25;
+            if (password.match(/[0-9]+/)) strength += 25;
+            
+            meter.style.width = strength + '%';
+            
+            const colors = {
+                25: { bg: '#ff4757', text: 'Weak' },
+                50: { bg: '#ffa502', text: 'Fair' },
+                75: { bg: '#3498db', text: 'Good' },
+                100: { bg: '#2ecc71', text: 'Strong' }
+            };
+            
+            const level = strength <= 25 ? 25 : strength <= 50 ? 50 : strength <= 75 ? 75 : 100;
+            meter.style.background = colors[level].bg;
+            text.textContent = colors[level].text;
+            text.style.color = colors[level].bg;
+        }
 
         // Register
         document.getElementById('registerFormElement').addEventListener('submit', function(e) {
@@ -727,6 +844,119 @@
                 this.reset();
                 document.getElementById('strengthMeter').style.width = '0';
                 document.getElementById('strengthText').textContent = '';
+                
+                setTimeout(() => {
+                    showLogin();
+                    setTimeout(() => successMsg.classList.remove('show'), 3000);
+                }, 1500);
+            }
+        });
+
+        // Forgot Password
+        document.getElementById('forgotPasswordFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            document.querySelectorAll('.error').forEach(err => err.classList.remove('show'));
+            
+            const email = document.getElementById('forgotEmail').value.trim();
+            
+            if (!validateEmail(email)) {
+                document.getElementById('forgotEmailError').textContent = 'Invalid email format';
+                document.getElementById('forgotEmailError').classList.add('show');
+                return;
+            }
+            
+            const user = db.findUser(email);
+            
+            if (!user) {
+                document.getElementById('forgotEmailError').textContent = 'Email not found';
+                document.getElementById('forgotEmailError').classList.add('show');
+                return;
+            }
+            
+            // Generate 6-digit code
+            const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+            resetCodeData = {
+                email: email,
+                code: resetCode,
+                expires: Date.now() + 600000 // 10 minutes
+            };
+            
+            const successMsg = document.getElementById('resetSuccess');
+            successMsg.textContent = `✓ Reset code sent! Use code: ${resetCode} (Valid for 10 minutes)`;
+            successMsg.classList.add('show');
+            
+            this.reset();
+            
+            setTimeout(() => {
+                showResetPassword();
+                successMsg.classList.remove('show');
+            }, 2000);
+        });
+
+        // Reset Password
+        document.getElementById('resetPasswordFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            document.querySelectorAll('.error').forEach(err => err.classList.remove('show'));
+            
+            const code = document.getElementById('resetCode').value.trim();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmNewPassword').value;
+            
+            let hasError = false;
+            
+            // Check if reset code exists
+            if (!resetCodeData) {
+                document.getElementById('resetCodeError').textContent = 'Please request a new reset code';
+                document.getElementById('resetCodeError').classList.add('show');
+                return;
+            }
+            
+            // Check if code expired
+            if (Date.now() > resetCodeData.expires) {
+                document.getElementById('resetCodeError').textContent = 'Reset code expired. Please request a new one';
+                document.getElementById('resetCodeError').classList.add('show');
+                resetCodeData = null;
+                return;
+            }
+            
+            // Validate code
+            if (code !== resetCodeData.code) {
+                document.getElementById('resetCodeError').textContent = 'Invalid reset code';
+                document.getElementById('resetCodeError').classList.add('show');
+                hasError = true;
+            }
+            
+            // Validate password
+            if (newPassword.length < 8) {
+                document.getElementById('newPasswordError').textContent = 'Password must be at least 8 characters';
+                document.getElementById('newPasswordError').classList.add('show');
+                hasError = true;
+            }
+            
+            // Validate confirm password
+            if (newPassword !== confirmPassword) {
+                document.getElementById('confirmNewPasswordError').textContent = 'Passwords do not match';
+                document.getElementById('confirmNewPasswordError').classList.add('show');
+                hasError = true;
+            }
+            
+            if (!hasError) {
+                // Update password in database
+                const user = db.findUser(resetCodeData.email);
+                if (user) {
+                    user.password = newPassword;
+                }
+                
+                const successMsg = document.getElementById('loginSuccess');
+                successMsg.textContent = '✓ Password reset successfully! Please sign in with your new password.';
+                successMsg.classList.add('show');
+                
+                this.reset();
+                document.getElementById('strengthMeterReset').style.width = '0';
+                document.getElementById('strengthTextReset').textContent = '';
+                resetCodeData = null;
                 
                 setTimeout(() => {
                     showLogin();
@@ -824,6 +1054,6 @@
                 : `Shopping as: ${currentUser.name}\n${currentUser.isNewUser ? 'Discount: ' + currentUser.discountCode : 'No discount available'}`;
             alert(message);
         }
-    </script>
+    </script> -->
 </body>
 </html>

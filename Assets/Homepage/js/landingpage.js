@@ -32,7 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
 const searchIcons = document.querySelectorAll('.search');
 const searchOverlay = document.querySelector('.search-overlay');
 const closeSearch = document.querySelector('.close-search');
-const navbar = document.querySelector('.navbar');
+const navbar =
+  document.querySelector('.navbar') ||
+  document.querySelector('nav');
+
 
 if (searchIcons.length && searchOverlay && closeSearch && navbar) {
 

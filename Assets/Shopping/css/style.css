@@ -7,16 +7,18 @@ body {
 
 /* Navbar */
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  width: 100%;
   display: flex;
   justify-content: space-between; /* kiri dan kanan */
   align-items: center;
   padding: 20px 50px;
   background: white;
+}
+
+nav.search-active {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .left-nav {
@@ -39,9 +41,11 @@ nav .logo img {
   width: auto;
 }
 
-nav .nav-links {
-  display: flex;
-  gap: 40px; /* jarak antar link */
+@media (min-width: 993px) {
+  nav .nav-links {
+    display: flex;
+    gap: 40px; /* jarak antar link */
+  }
 }
 
 nav .nav-links a {
@@ -57,16 +61,30 @@ nav .cart {
   cursor: pointer;
 }
 
+nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
 /* Search Overlay */
 .search-overlay {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  height: 9%;
+
+  /* ⛔ height: 9%;  (INI PENYEBAB UTAMA) */
+  min-height: 50vh;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* 🔥 PENTING */
   align-items: center;
+
+  padding-top: 10px; /* jarak dari navbar */
+
   background: rgba(255, 255, 255, 0.95);
   opacity: 0;
   visibility: hidden;
@@ -113,6 +131,169 @@ nav .cart {
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+/* ================= SEARCH CONTENT ================= */
+.search-content {
+  margin-top: 10px;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Section */
+.search-section {
+  margin-bottom: 30px;
+}
+
+.search-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+/* ================= TAG CATEGORY ================= */
+.search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-tags button {
+  background: #d7ff2f;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-tags button:hover {
+  background: #c7ef1f;
+}
+
+/* ================= RECENT PRODUCT ================= */
+.search-result {
+  width: 50%;
+  padding: 30px;
+  margin-top: 0px;
+  background-color: white;
+  max-height: 320px; /* tinggi maksimal */
+  overflow-y: auto; /* scroll ke bawah */
+}
+
+/* scroll halus */
+#searchResult::-webkit-scrollbar {
+  width: 5px;
+}
+
+.search-result h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.search-result .empty {
+  font-size: 13px;
+  color: #777;
+}
+
+.search-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.search-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.search-item h5 {
+  font-size: 13px;
+  margin: 0;
+}
+
+.search-item span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search-content {
+  display: block;
+}
+
+.search-result {
+  display: none;
+}
+
+/* Recent Products Wrapper */
+.recent-products {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto; /* ⬅️ scroll ke kanan */
+  padding-bottom: 6px;
+  scroll-behavior: smooth;
+}
+
+/* Hilangin scrollbar (optional tapi cakep) */
+.recent-products::-webkit-scrollbar {
+  height: 6px;
+}
+
+.recent-products::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+/* Card Recent */
+.recent-item {
+  min-width: 200px; /* ⬅️ bikin item ke-samping */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.recent-item:hover {
+  background: #f0f0f0;
+}
+
+.recent-item img {
+  width: 48px; /* ⬅️ kecil & rapi */
+  height: 48px;
+  object-fit: cover; /* biar ga gepeng */
+  border-radius: 6px;
+}
+
+.recent-item h5 {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.recent-item span {
+  font-size: 13px;
+  color: #777;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .recent-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Hamburger Icon */

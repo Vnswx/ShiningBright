@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="Assets/Shopping/css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #fff;
+            color: #000;
+        }
+
+        /* ================= LAYOUT ================= */
+        .checkout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* ================= LEFT ================= */
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        small {
+            font-size: 12px;
+            color: #666;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #e5e5e5;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        /* ================= SHIPPING & PAYMENT ================= */
+        .placeholder-box {
+            background: #e5e5e5;
+            padding: 18px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .payment-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e5e5e5;
+            padding: 18px;
+            font-weight: bold;
+        }
+
+        /* ================= RIGHT ================= */
+        .summary {
+            background: #e5e5e5;
+            padding: 25px;
+        }
+
+        .product {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-weight: bold;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .total {
+            font-weight: bold;
+            border-top: 1px solid #aaa;
+            padding-top: 10px;
+        }
+
+        .order-btn {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .order-btn:hover {
+            opacity: 0.9;
+        }
+
+        .terms {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
+            color: #444;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 900px) {
+            .checkout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--  -->
+
+    <div class="search-overlay">
+        <!-- SEARCH BOX (atas) -->
+        <div class="search-box">
+            <img src="Assets/assetnavbarhero/search.svg" class="search-btn" alt="search" />
+            <input type="text" id="searchInput" placeholder="Search product..." />
+            <span class="close-search">&times;</span>
+        </div>
+
+        <!-- SEARCH RESULT -->
+        <div class="search-result" id="searchResult">
+            <h4>Products</h4>
+            <p class="empty">Type to search products</p>
+        </div>
+
+        <!-- SEARCH CONTENT -->
+        <div class="search-content" id="searchContent">
+            <!-- Popular Search -->
+            <div class="search-section">
+                <h4>Popular Search Terms</h4>
+                <div class="search-tags">
+                    <button data-category="T-Shirt">T-Shirt</button>
+                    <button data-category="Jacket">Jacket</button>
+                    <button data-category="Shirt">Shirt</button>
+                    <button data-category="Hoodie">Hoodie</button>
+                    <button data-category="Crewneck">Crewneck</button>
+                    <button data-category="Jeans">LongPants</button>
+                    <button data-category="Underwear">Underwear</button>
+                </div>
+            </div>
+
+            <!-- Recent Viewed -->
+            <div class="search-section">
+                <h4>Recent Viewed</h4>
+                <div class="recent-products" id="recentProducts"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="checkout">
+
+        <!-- ================= LEFT ================= -->
+        <div>
+
+            <h2>Address Details</h2>
+
+            <div class="section">
+                <label>Email Address (Optional)</label>
+                <input type="email">
+                <small>We will send your order detail to your email</small>
+            </div>
+
+            <div class="section">
+                <label>Recipient Full Name</label>
+                <input type="text">
+            </div>
+
+            <div class="section">
+                <label>Recipient Phone Number</label>
+                <input type="tel">
+            </div>
+
+            <div class="section">
+                <label>Country</label>
+                <input type="text" value="Indonesia" disabled>
+            </div>
+
+            <div class="section">
+                <label>Sub-district, District, City</label>
+                <input type="text">
+            </div>
+
+            <div class="section">
+                <label>Address Details</label>
+                <textarea maxlength="250"></textarea>
+                <div class="char-count">0/250</div>
+            </div>
+
+            <div class="section checkbox">
+                <input type="checkbox">
+                <span>Make as a dropship order</span>
+            </div>
+
+            <div class="section">
+                <h2>Shipment Method</h2>
+                <div class="placeholder-box">
+                    Complete address detail to see available shipping methods.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Payment Method</h2>
+                <div class="payment-option">
+                    <span>QRIS</span>
+                    <span>QRIS</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= RIGHT ================= -->
+        <div>
+            <div class="summary">
+                <div class="product">
+                    <div class="product-title" id="p-name">
+                        </div>
+                    <div id="p-size"></div>
+                    <div id="p-qty">Quantity: 1</div>
+                    <div id="p-price" style="text-align:right; font-weight:bold;">
+                        </div>
+                </div>
+        
+                <input type="text" placeholder="Leave a message for delivery (Optional)" style="margin-bottom:10px;">
+                <input type="text" placeholder="Voucher">
+        
+                <div class="row">
+                    <span id="subtotal-label">Subtotal * 1 items</span>
+                    <span id="subtotal-price">Rp 0</span>
+                </div>
+        
+                <div class="row">
+                    <span>Shipping</span>
+                    <span>Rp 0</span>
+                </div>
+        
+                <div class="row" id="discount-row" style="display: none; color: #2ecc71; font-weight: bold;">
+                    <span>Member Discount (20%)</span>
+                    <span id="discount-amount">- Rp 0</span>
+                </div>
+                
+                <div class="row total">
+                    <span>Total Payment</span>
+                    <span id="total-payment" style="color: #d9534f; font-weight: bold;">Rp 0</span>
+                </div>
+        
+                <small style="display:block; margin-top:10px; text-align:center;">
+                    Secure Payment | Your payment is encrypted
+                </small>
+        
+                <button class="order-btn">Order Now</button>
+        
+                <div class="terms">
+                    By placing your order, you agree to our Terms & Conditions
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container footer">
+            <div class="row justify-content-between">
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <h6>FEATURES</h6>
+                    <ul>
+                        <li><a href="#">SHOP</a></li>
+                        <li><a href="#">NEW ARRIVALS</a></li>
+                        <li><a href="#">ABOUT</a></li>
+                        <li><a href="#">CONTACT US</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <h6>PRODUK</h6>
+                    <ul>
+                        <li><a href="#">T-SHIRT</a></li>
+                        <li><a href="#">JACKET</a></li>
+                        <li><a href="#">SHIRT</a></li>
+                        <li><a href="#">HOODIE</a></li>
+                        <li><a href="#">CREWNECK</a></li>
+                        <li><a href="#">LONG PANTS</a></li>
+                        <li><a href="#">UNDERWEAR</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-4 col-lg-3 mb-4">
+                    <h6>PAYMENT METHOD</h6>
+                    <div class="payment-img">
+                        <img src="Assets/Shopping/img/payment.png" alt="Payment Methods" />
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-5 col-lg-4">
+                    <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
+
+                    <h6>FOLLOW ME</h6>
+
+                    <div class="social-icons mb-3">
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-tiktok"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-facebook"></i>
+                    </div>
+
+                    <div class="contact-info mb-3">
+                        <h6>CONTACT US</h6>
+                        <p>089531432748</p>
+                        <a href="mailto:shinningbright@gmail.com">shinningbright@gmail.com</a>
+                        <hr style="border: 1px solid black; width: 75%; margin-top: 6px" />
+                    </div>
+
+                    <div class="store-info">
+                        <h6>STORE OFFLINE</h6>
+                        <p><strong>Tangerang Selatan</strong></p>
+                        <p>
+                            Jl. Jombang Raya No.97, Pd. Pucung, Kec. Pd. Aren, Kota
+                            Tangerang Selatan, Banten 15227
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Assets/Shopping/js/auth.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Ambil Data dari LocalStorage
+            const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+            const auth = JSON.parse(localStorage.getItem("SB_AUTH"));
+            
+            // Target elemen HTML
+            const productContainer = document.querySelector(".product"); 
+            const subtotalLabel = document.getElementById("subtotal-label");
+            const subtotalPriceDisplay = document.getElementById("subtotal-price");
+            const discountRow = document.getElementById("discount-row");
+            const discountAmountDisplay = document.getElementById("discount-amount");
+            const totalPaymentDisplay = document.getElementById("total-payment");
+        
+            // Bersihkan isi container produk awal
+            if (productContainer) productContainer.innerHTML = ""; 
+        
+            if (cart.length > 0) {
+                let subtotal = 0;
+                let totalItems = 0;
+        
+                // 2. Loop dan Render Produk
+                cart.forEach((item) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    totalItems += item.quantity;
+        
+                    productContainer.innerHTML += `
+                        <div style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+                            <div class="product-title" style="font-weight:bold;">${item.name}</div>
+                            <div>Size: ${item.size}</div>
+                            <div>Quantity: ${item.quantity}</div>
+                            <div style="text-align:right; font-weight:bold;">Rp ${itemTotal.toLocaleString()}</div>
+                        </div>
+                    `;
+                });
+        
+                // 3. LOGIKA DISKON (Hanya satu kali kalkulasi)
+                let discountAmount = 0;
+        
+                // Cek apakah user login dan BUKAN guest
+                if (auth && auth.isLogin === true && auth.isGuest === false) {
+                    discountAmount = subtotal * 0.20; // Hitung 20%
+                    
+                    if (discountRow) {
+                        discountRow.style.display = "flex";
+                        discountAmountDisplay.textContent = "- Rp " + discountAmount.toLocaleString();
+                    }
+                } else {
+                    if (discountRow) discountRow.style.display = "none";
+                }
+        
+                // 4. HITUNG TOTAL AKHIR (Subtotal dikurangi Diskon)
+                const finalTotal = subtotal - discountAmount;
+        
+                // 5. UPDATE TAMPILAN
+                if (subtotalLabel) subtotalLabel.textContent = `Subtotal * ${totalItems} items`;
+                if (subtotalPriceDisplay) subtotalPriceDisplay.textContent = `Rp ${subtotal.toLocaleString()}`;
+                if (totalPaymentDisplay) totalPaymentDisplay.textContent = `Rp ${finalTotal.toLocaleString()}`;
+        
+                // Debugging di Console (Tekan F12 untuk cek)
+                console.log("Member Login:", (auth && !auth.isGuest));
+                console.log("Subtotal:", subtotal);
+                console.log("Potongan Diskon:", discountAmount);
+                console.log("Total Harus Dibayar:", finalTotal);
+        
+            } else {
+                productContainer.innerHTML = "<p style='text-align:center; padding: 20px;'>Your cart is empty.</p>";
+            }
+        });
+        </script>
+</body>
+
+</html>
