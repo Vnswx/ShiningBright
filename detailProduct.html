@@ -126,7 +126,11 @@
 
             <div id="sizeList" class="size-list"></div>
 
-            <div class="size-chart">
+            <button type="button" class="btn btn-outline-dark btn-sm mt-3" onclick="showSizeChart()">
+                <i class="bi bi-rulers"></i> View Size Chart
+            </button>
+
+            <!-- <div class="size-chart">
                 <h3>Size Chart</h3>
                 <table>
                     <tr>
@@ -162,7 +166,7 @@
                         <td>58</td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -252,12 +256,66 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Assets/Shopping/js/general.js"></script>
     <script src="Assets/Shopping/js/data.js"></script>
     <script src="Assets/Shopping/js/auth.js"></script>
     <script src="Assets/Shopping/js/search.js"></script>
     <!-- <script src="Assets/Homepage/js/landingpage.js"></script> -->
     <script>
+
+        window.showSizeChart = function () {
+            Swal.fire({
+                title: 'Size Chart',
+                html: `
+            <div style="overflow-x:auto;">
+                <table class="table table-bordered" style="font-size: 14px; width: 100%;">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Size</th>
+                            <th>S</th>
+                            <th>M</th>
+                            <th>L</th>
+                            <th>XL</th>
+                            <th>XXL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Length</td>
+                            <td>62</td>
+                            <td>64</td>
+                            <td>66</td>
+                            <td>68</td>
+                            <td>70</td>
+                        </tr>
+                        <tr>
+                            <td>Width</td>
+                            <td>56</td>
+                            <td>58</td>
+                            <td>60</td>
+                            <td>62</td>
+                            <td>64</td>
+                        </tr>
+                        <tr>
+                            <td>Sleeves</td>
+                            <td>50</td>
+                            <td>52</td>
+                            <td>54</td>
+                            <td>56</td>
+                            <td>58</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        `,
+                showCloseButton: true,
+                focusConfirm: false,
+                confirmButtonText: 'Close',
+                confirmButtonColor: '#000',
+                width: '600px'
+            });
+        };
 
         window.toggleDropdown = function () {
             const dropdown = document.getElementById("dropdown-content");

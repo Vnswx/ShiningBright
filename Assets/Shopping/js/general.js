@@ -5,7 +5,7 @@ const nextBtn = document.getElementById("nextBtn");
 const titleEl = document.getElementById("musicTitle");
 
 const playlist = [
-  { title: "Naff - Terendap Laraku", src: "Assets/music/music.mp3" },
+  { title: "JVKE - Golden Hour", src: "Assets/music/golden-hour.mp3" },
   { title: "Lagu Kedua", src: "audio/lagu2.mp3" },
   { title: "Lagu Ketiga", src: "audio/lagu3.mp3" }
 ];

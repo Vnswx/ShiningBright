@@ -329,7 +329,7 @@
                 </div>
 
                 <input type="text" placeholder="Leave a message for delivery (Optional)" style="margin-bottom:10px;">
-                <input type="text" placeholder="Voucher">
+                <input type="text" id="voucherInput" placeholder="Voucher">
 
                 <div class="row">
                     <span id="subtotal-label">Subtotal * 1 items</span>
@@ -342,7 +342,7 @@
                 </div>
 
                 <div class="row" id="discount-row" style="display: none; color: #2ecc71; font-weight: bold;">
-                    <span>Member Discount (20%)</span>
+                    <span>Member Discount (30%)</span>
                     <span id="discount-amount">- Rp 0</span>
                 </div>
 
@@ -387,6 +387,19 @@
                 style="width: 100%; background: #000; color: #fff; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold;">I
                 Have Paid</button>
         </div>
+    </div>
+
+    <div class="music-card">
+        <div class="music-info">
+            <h4 id="musicTitle">Nosstreess - Pegang tanganku</h4>
+        </div>
+        <div class="music-controls">
+            <button id="prevBtn">⏮</button>
+            <button id="playPauseBtn">⏸</button>
+            <button id="nextBtn">⏭</button>
+        </div>
+
+        <audio id="audioPlayer" src="Assets/music/music.mp3"></audio>
     </div>
     <footer>
         <div class="container footer">
@@ -454,14 +467,13 @@
     </footer>
 
     <script src="Assets/Shopping/js/auth.js"></script>
+    <script src="Assets/Shopping/js/general.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // 1. Inisialisasi Data
             const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
             const auth = JSON.parse(localStorage.getItem("SB_AUTH"));
 
-            // Elemen UI
             const productContainer = document.querySelector(".product");
             const subtotalLabel = document.getElementById("subtotal-label");
             const subtotalPriceDisplay = document.getElementById("subtotal-price");
@@ -476,6 +488,12 @@
             const shippingPlaceholder = document.getElementById("shippingPlaceholder");
             const shippingOptions = document.getElementById("shippingOptions");
             const shippingSelect = document.getElementById("shippingSelect");
+            const authData = JSON.parse(localStorage.getItem(AUTH_KEY));
+            const voucherField = document.getElementById("voucherInput");
+
+            if (authData && authData.discountCode && voucherField) {
+                voucherField.value = authData.discountCode;
+            }
 
             // --- A. AUTOFILL FORM ---
             if (auth && auth.isLogin) {
@@ -531,7 +549,7 @@
 
                 // Hitung Diskon Member
                 if (auth && auth.isLogin && !auth.isGuest) {
-                    discountAmount = subtotal * 0.20;
+                    discountAmount = subtotal * 0.30;
                     discountRow.style.display = "flex";
                     discountAmountDisplay.textContent = "- Rp " + discountAmount.toLocaleString();
                 }

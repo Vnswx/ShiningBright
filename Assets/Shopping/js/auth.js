@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (pass !== conf) return alert("Password tidak sama");
 
             db.addUser({ name, email, password: pass });
-            alert("Registrasi berhasil! Gunakan kode NEW30 untuk diskon pertama Anda.");
+            alert("Registrasi berhasil! Gunakan kode", user.discountCode, "untuk diskon pertama Anda.");
             window.showLogin();
         });
 
