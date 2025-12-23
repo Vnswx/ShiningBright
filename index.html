@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav>
+    <nav class="navbar">
       <div class="left-nav">
         <div class="logo">
           <img
@@ -22,7 +22,7 @@
           />
         </div>
         <div class="nav-links">
-          <a href="allProduct.html">SHOP</a>
+          <a href="#">SHOP</a>
           <a href="#">NEW ARRIVALS</a>
           <a href="#">ABOUT</a>
           <a href="#">CONTACT</a>
@@ -57,16 +57,46 @@
       </div>
     </nav>
 
-    <!-- Search Overlay -->
+    <!-- SEARCH OVERLAY -->
     <div class="search-overlay">
+      <!-- SEARCH BOX (atas) -->
       <div class="search-box">
-        <input type="text" placeholder="Search our products" />
         <img
-          class="search-btn"
           src="Assets/assetnavbarhero/search.svg"
-          alt="Search"
+          class="search-btn"
+          alt="search"
         />
+        <input type="text" id="searchInput" placeholder="Search product..." />
         <span class="close-search">&times;</span>
+      </div>
+
+      <!-- SEARCH RESULT -->
+      <div class="search-result" id="searchResult">
+        <h4>Products</h4>
+        <p class="empty">Type to search products</p>
+      </div>
+
+      <!-- SEARCH CONTENT -->
+      <div class="search-content" id="searchContent">
+        <!-- Popular Search -->
+        <div class="search-section">
+          <h4>Popular Search Terms</h4>
+          <div class="search-tags">
+            <button data-category="T-Shirt">T-Shirt</button>
+            <button data-category="Jacket">Jacket</button>
+            <button data-category="Shirt">Shirt</button>
+            <button data-category="Hoodie">Hoodie</button>
+            <button data-category="Crewneck">Crewneck</button>
+            <button data-category="Jeans">LongPants</button>
+            <button data-category="Underwear">Underwear</button>
+          </div>
+        </div>
+
+        <!-- Recent Viewed -->
+        <div class="search-section">
+          <h4>Recent Viewed</h4>
+          <div class="recent-products" id="recentProducts"></div>
+        </div>
       </div>
     </div>
 
@@ -124,6 +154,72 @@
       </div>
     </section>
 
+    <!-- COLLABORATION SECTION -->
+    <section class="collab-section">
+      <div class="collab-container">
+        <!-- Video kiri -->
+        <div class="collab-video">
+          <video id="collabVideo" autoplay muted loop playsinline>
+            <source src="Assets/assetnavbarhero/colab.mp4" type="video/mp4" />
+            Browser kamu tidak mendukung video.
+          </video>
+        </div>
+
+        <!-- Konten kanan -->
+        <div class="collab-content">
+          <h2>COLLABORATION</h2>
+          <p>Limited collaboration collection Shining x Wised</p>
+
+          <div class="collab-products">
+            <div class="collab-card">
+              <img
+                src="Assets/assetnavbarhero/colab1.png"
+                alt="Collab Product 1"
+              />
+              <h4>Shinning Bright x Artist Tee</h4>
+              <span>Rp 399.000</span>
+            </div>
+
+            <div class="collab-card">
+              <img
+                src="Assets/assetnavbarhero/colab2.png"
+                alt="Collab Product 2"
+              />
+              <h4>Shinning Bright Collab Hoodie</h4>
+              <span>Rp 599.000</span>
+            </div>
+
+            <div class="collab-card">
+              <img
+                src="Assets/assetnavbarhero/colab3.png"
+                alt="Collab Product 3"
+              />
+              <h4>Shinning Bright Collab Shirt</h4>
+              <span>Rp 459.000</span>
+            </div>
+
+            <div class="collab-card">
+              <img
+                src="Assets/assetnavbarhero/colab4.png"
+                alt="Collab Product 3"
+              />
+              <h4>Shinning Bright Collab Shirt</h4>
+              <span>Rp 459.000</span>
+            </div>
+
+            <div class="collab-card">
+              <img
+                src="Assets/assetnavbarhero/colab5.png"
+                alt="Collab Product 2"
+              />
+              <h4>Shinning Bright Collab Hoodie</h4>
+              <span>Rp 599.000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- New Arrivals Section -->
     <section class="new-arrivals">
       <div class="new-arrivals-hero">
@@ -141,45 +237,6 @@
       </div>
 
       <div class="product-list">
-        <div class="product-card">
-          <span class="badge">NEW</span>
-          <img src="Assets/assetnewarrival/newarrival1.png" alt="Shirt Red" />
-          <h4>Shinning Bright Boxy Shirt - Red</h4>
-          <p>Rp 319,000</p>
-        </div>
-
-        <div class="product-card">
-          <span class="badge">NEW</span>
-          <img src="Assets/assetnewarrival/newarrival2.png" alt="Shirt Blue" />
-          <h4>Shinning Bright Boxy Shirt - Blue</h4>
-          <p>Rp 319,000</p>
-        </div>
-
-        <div class="product-card">
-          <span class="badge">NEW</span>
-          <img src="Assets/assetnewarrival/newarrival3.png" alt="Shirt Brown" />
-          <h4>Shinning Bright Boxy Shirt - Brown</h4>
-          <p>Rp 319,000</p>
-        </div>
-
-        <div class="product-card">
-          <span class="badge">NEW</span>
-          <img src="Assets/assetnewarrival/newarrival4.png" alt="Shirt Green" />
-          <h4>Shinning Bright Boxy Shirt - Green</h4>
-          <p>Rp 319,000</p>
-        </div>
-
-        <div class="product-card">
-          <img src="Assets/assetnewarrival/newarrival5.png" alt="Shirt Navy" />
-          <h4>Shinning Bright Shirt Oxford - Navy</h4>
-          <p>Rp 319,000</p>
-        </div>
-
-        <div class="product-card">
-          <img src="Assets/assetnewarrival/newarrival6.png" alt="Shirt Liner" />
-          <h4>Shinning Bright Shirt Liner - Green</h4>
-          <p>Rp 319,000</p>
-        </div>
         <div class="product-card">
           <span class="badge">NEW</span>
           <img src="Assets/assetnewarrival/newarrival1.png" alt="Shirt Red" />
@@ -344,7 +401,126 @@
         </div>
       </div>
     </footer>
+    <script></script>
 
     <script src="Assets/Homepage/js/landingpage.js"></script>
+    <script src="Assets/Shopping/js/data.js"></script>
+
+    <script>
+      // ================= ELEMENT =================
+      const searchInput = document.querySelector(".search-box input");
+      const searchContent = document.getElementById("searchContent");
+      const searchResult = document.getElementById("searchResult");
+      const recentWrapper = document.getElementById("recentProducts");
+
+      // ================= RECENT CONFIG =================
+      const RECENT_KEY = "recent_products";
+
+      function getRecentProducts() {
+        return JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+      }
+
+      function renderRecent() {
+        const recent = getRecentProducts();
+
+        if (!recent.length) {
+          recentWrapper.innerHTML =
+            "<p class='empty'>No recent viewed products</p>";
+          return;
+        }
+
+        recentWrapper.innerHTML = "";
+
+        recent.forEach((product) => {
+          const div = document.createElement("div");
+          div.className = "recent-item";
+
+          div.innerHTML = `
+        <img src="${product.images[0]}" />
+        <div>
+          <h5>${product.name}</h5>
+          <span>Rp ${product.newPrice.toLocaleString()}</span>
+        </div>
+      `;
+
+          div.addEventListener("click", () => {
+            window.location.href = `detailProduct.html?id=${product.id}`;
+          });
+
+          recentWrapper.appendChild(div);
+        });
+      }
+
+      // ================= LIVE SEARCH =================
+      searchInput.addEventListener("input", function () {
+        const keyword = this.value.trim().toLowerCase();
+
+        if (!keyword) {
+          searchContent.style.display = "block";
+          searchResult.style.display = "none";
+          searchResult.innerHTML = "";
+          renderRecent(); // ⬅️ refresh recent saat kosong
+          return;
+        }
+
+        searchContent.style.display = "none";
+        searchResult.style.display = "block";
+        searchResult.innerHTML = "<h4>Products</h4>";
+
+        const filtered = products.filter((p) =>
+          p.name.toLowerCase().includes(keyword)
+        );
+
+        if (!filtered.length) {
+          searchResult.innerHTML += `
+        <p class="empty">
+          0 Results Found <br />
+          Ups, sorry no results for "${keyword}"
+        </p>`;
+          return;
+        }
+
+        filtered.forEach((product) => {
+          const div = document.createElement("div");
+          div.className = "search-item";
+
+          div.innerHTML = `
+        <img src="${product.images[0]}" />
+        <div>
+          <h5>${product.name}</h5>
+          <span>Rp ${product.newPrice.toLocaleString()}</span>
+        </div>
+      `;
+
+          div.addEventListener("click", () => {
+            window.location.href = `detailProduct.html?id=${product.id}`;
+          });
+
+          searchResult.appendChild(div);
+        });
+      });
+
+      // ================= ENTER → ALL PRODUCT =================
+      searchInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          const keyword = this.value.trim();
+          if (keyword) {
+            window.location.href =
+              "allProduct.html?search=" + encodeURIComponent(keyword);
+          }
+        }
+      });
+
+      // ================= SEARCH TAG =================
+      document.querySelectorAll(".search-tags button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const category = btn.dataset.category;
+          window.location.href = `allProduct.html?category=${category}`;
+        });
+      });
+
+      // ================= INIT =================
+      renderRecent();
+    </script>
   </body>
 </html>
