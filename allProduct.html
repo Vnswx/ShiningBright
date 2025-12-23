@@ -1,164 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Product</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Assets/Shopping/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Product</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="Assets/Shopping/css/style.css">
-</head>
-
-<body>
-
-  <!-- Navbar kalo engga di scroll bg-white border-bottom -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        SHINNING<span>BRIGHT.</span>
-      </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html">SHOP</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">NEW ARRIVALS</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
-        </ul>
-
-        <div class="d-flex align-items-center icon-group">
-          <i class="bi bi-search"></i>
-          <i class="bi bi-bag"></i>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="left-nav">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="Assets/assetnavbarhero/logosb.png"
+              alt="Shinning Bright Logo"
+            />
+          </a>
         </div>
+
+        <!-- <div class="nav-links">
+          <a href="#">SHOP</a>
+          <a href="#">NEW ARRIVALS</a>
+          <a href="#">ABOUT</a>
+          <a href="#">CONTACT</a>
+        </div> -->
+      </div>
+      <div class="cart">
+        <div class="cart2">
+          <img
+            class="search"
+            src="Assets/assetnavbarhero/search.svg"
+            alt="Search Icon"
+          />
+          <img src="Assets/assetnavbarhero/shop.svg" alt="Cart Icon" />
+        </div>
+
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+      </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+      <div class="search-box">
+        <input type="text" placeholder="Search our products" />
+        <img
+          class="search-btn"
+          src="Assets/assetnavbarhero/search.svg"
+          alt="Search"
+        />
+        <span class="close-search">&times;</span>
       </div>
     </div>
-  </nav>
 
-  <section class="hero">
-    <h1>SHINNING<span>BRIGHT</span><small>®</small></h1>
-  </section>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <img
+        src="Assets/assetnavbarhero/logosballproduct.png"
+        alt="Shinning Bright Logo"
+        class="about-logo"
+      />
+    </section>
+    <!-- Kalo ini bagian produk ya sobat -->
+    <section class="product-section">
+      <div class="section-header">
+        <h5>ALL PRODUCT</h5>
+        <select id="filterCategory">
+          <option value="all">ALL PRODUCT</option>
+          <option value="T-Shirt">T-Shirt</option>
+          <option value="Jacket">Jacket</option>
+          <option value="Shirt">Shirt</option>
+          <option value="Hoodie">Hoodie</option>
+          <option value="Crewneck">Crewneck</option>
+          <option value="Jeans">LongPants</option>
+          <option value="Underwear">Underwear</option>
+        </select>
+      </div>
 
-  <!-- Kalo ini bagian produk ya sobat -->
-  <section class="product-section">
-    <div class="section-header">
-      <h5>ALL PRODUCT</h5>
-      <select id="filterCategory">
-        <option value="all">ALL PRODUCT</option>
-        <option value="T-Shirt">T-Shirt</option>
-        <option value="Jacket">Jacket</option>
-        <option value="Shirt">Shirt</option>
-        <option value="Hoodie">Hoodie</option>
-        <option value="Crewneck">Crewneck</option>
-        <option value="Jeans">LongPants</option>
-        <option value="Shorts">Underwear</option>
-      </select>
-    </div>
+      <div class="row g-4" id="productList" style="margin-bottom: 130px"></div>
+    </section>
 
-    <div class="row g-4" id="productList" style="margin-bottom: 130px;"></div>
-  </section>
-
- 
-  <!-- Ini footernyaa kawann -->
-  <footer>
-    <div class="container footer">
-      <div class="row justify-content-between">
-
-        <div class="col-6 col-md-3 col-lg-2 mb-4">
-          <h6>FEATURES</h6>
-          <ul>
-            <li><a href="#">SHOP</a></li>
-            <li><a href="#">NEW ARRIVALS</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">CONTACT US</a></li>
-          </ul>
-        </div>
-
-        <div class="col-6 col-md-3 col-lg-2 mb-4">
-          <h6>PRODUK</h6>
-          <ul>
-            <li><a href="#">T-SHIRT</a></li>
-            <li><a href="#">JACKET</a></li>
-            <li><a href="#">SHIRT</a></li>
-            <li><a href="#">HOODIE</a></li>
-            <li><a href="#">CREWNECK</a></li>
-            <li><a href="#">LONG PANTS</a></li>
-            <li><a href="#">UNDERWEAR</a></li>
-          </ul>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-3 mb-4">
-          <h6>PAYMENT METHOD</h6>
-          <div class="payment-img">
-            <img src="Assets/Shopping/img/payment.png" alt="Payment Methods">
-          </div>
-        </div>
-
-        <div class="col-12 col-md-5 col-lg-4">
-          <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
-
-          <h6>FOLLOW ME</h6>
-
-          <div class="social-icons mb-3">
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-tiktok"></i>
-            <i class="bi bi-youtube"></i>
-            <i class="bi bi-facebook"></i>
+    <!-- Ini footernyaa kawann -->
+    <footer>
+      <div class="container footer">
+        <div class="row justify-content-between">
+          <div class="col-6 col-md-3 col-lg-2 mb-4">
+            <h6>FEATURES</h6>
+            <ul>
+              <li><a href="#">SHOP</a></li>
+              <li><a href="#">NEW ARRIVALS</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li><a href="#">CONTACT US</a></li>
+            </ul>
           </div>
 
-          <div class="contact-info mb-3">
-            <h6>CONTACT US</h6>
-            <p>089531432748</p>
-            <a href="mailto:shinningbright@gmail.com">shinningbright@gmail.com</a>
-            <hr style="border: 1px solid black; width: 75%; margin-top: 6px;">
+          <div class="col-6 col-md-3 col-lg-2 mb-4">
+            <h6>PRODUK</h6>
+            <ul>
+              <li><a href="#">T-SHIRT</a></li>
+              <li><a href="#">JACKET</a></li>
+              <li><a href="#">SHIRT</a></li>
+              <li><a href="#">HOODIE</a></li>
+              <li><a href="#">CREWNECK</a></li>
+              <li><a href="#">LONG PANTS</a></li>
+              <li><a href="#">UNDERWEAR</a></li>
+            </ul>
           </div>
 
-          <div class="store-info">
-            <h6>STORE OFFLINE</h6>
-            <p><strong>Tangerang Selatan</strong></p>
-            <p>Jl. Jombang Raya No.97, Pd. Pucung,
-              Kec. Pd. Aren, Kota Tangerang Selatan,
-              Banten 15227</p>
+          <div class="col-12 col-md-4 col-lg-3 mb-4">
+            <h6>PAYMENT METHOD</h6>
+            <div class="payment-img">
+              <img
+                src="Assets/Shopping/img/payment.png"
+                alt="Payment Methods"
+              />
+            </div>
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4">
+            <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
+
+            <h6>FOLLOW ME</h6>
+
+            <div class="social-icons mb-3">
+              <i class="bi bi-instagram"></i>
+              <i class="bi bi-tiktok"></i>
+              <i class="bi bi-youtube"></i>
+              <i class="bi bi-facebook"></i>
+            </div>
+
+            <div class="contact-info mb-3">
+              <h6>CONTACT US</h6>
+              <p>089531432748</p>
+              <a href="mailto:shinningbright@gmail.com"
+                >shinningbright@gmail.com</a
+              >
+              <hr
+                style="border: 1px solid black; width: 75%; margin-top: 6px"
+              />
+            </div>
+
+            <div class="store-info">
+              <h6>STORE OFFLINE</h6>
+              <p><strong>Tangerang Selatan</strong></p>
+              <p>
+                Jl. Jombang Raya No.97, Pd. Pucung, Kec. Pd. Aren, Kota
+                Tangerang Selatan, Banten 15227
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="Assets/Shopping/js/general.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="Assets/Shopping/js/data.js"></script>
+    <script src="Assets/Shopping/js/general.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Assets/Shopping/js/data.js"></script>
+    <script src="/Assets/Homepage/js/landingpage.js"></script>
 
-  <script>
-    const productList = document.getElementById("productList");
-    const filterCategory = document.getElementById("filterCategory");
+    <script>
+      const productList = document.getElementById("productList");
+      const filterCategory = document.getElementById("filterCategory");
 
-    renderProducts(products);
+      function renderProducts(data) {
+        productList.innerHTML = "";
 
-    filterCategory.addEventListener("change", () => {
-      const category = filterCategory.value;
+        data.forEach((product) => {
+          const card = document.createElement("div");
+          card.classList.add("col-6", "col-md-4", "col-lg-3");
 
-      if (category === "all") {
-        renderProducts(products);
-      } else {
-        const filtered = products.filter(p => p.tag2.toLowerCase() === category.toLowerCase());
-        renderProducts(filtered);
+          card.innerHTML = `
+        <div class="product-card" onclick="goToDetail('${product.id}')">
+          <img src="${product.images[0]}" alt="${product.name}">
+          <div class="product-info">
+            <h6>${product.tag2}</h6>
+            <p>${product.name}</p>
+            <p class="price">Rp ${product.newPrice.toLocaleString()}</p>
+          </div>
+        </div>
+      `;
+
+          productList.appendChild(card);
+        });
       }
-    });
 
-    function renderProducts(data) {
-      productList.innerHTML = "";
+      // render awal
+      renderProducts(products);
 
-      data.forEach(product => {
-        const card = document.createElement("div");
-        card.classList.add("col-6", "col-md-4", "col-lg-3");
+      filterCategory.addEventListener("change", function () {
+        const category = this.value;
 
-        card.innerHTML = `
+        if (category === "all") {
+          renderProducts(products);
+        } else {
+          const filteredProducts = products.filter(
+            (product) => product.tag2.toLowerCase() === category.toLowerCase()
+          );
+
+          renderProducts(filteredProducts);
+        }
+      });
+
+      function goToDetail(id) {
+        window.location.href = "detailProduct.html?id=" + id;
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const productList = document.getElementById("productList");
+        const filterCategory = document.getElementById("filterCategory");
+
+        if (
+          !productList ||
+          !filterCategory ||
+          typeof products === "undefined"
+        ) {
+          console.warn("Element / data produk belum siap");
+          return;
+        }
+
+        // ================= AMBIL CATEGORY DARI URL =================
+        const params = new URLSearchParams(window.location.search);
+        const categoryFromUrl = params.get("category");
+
+        // ================= RENDER AWAL =================
+        if (categoryFromUrl) {
+          filterCategory.value = categoryFromUrl;
+
+          const filtered = products.filter(
+            (p) => p.tag2.toLowerCase() === categoryFromUrl.toLowerCase()
+          );
+
+          renderProducts(filtered);
+        } else {
+          renderProducts(products);
+        }
+
+        // ================= EVENT DROPDOWN CATEGORY =================
+        filterCategory.addEventListener("change", function () {
+          const category = this.value;
+
+          if (category === "all") {
+            renderProducts(products);
+          } else {
+            const filtered = products.filter(
+              (p) => p.tag2.toLowerCase() === category.toLowerCase()
+            );
+            renderProducts(filtered);
+          }
+        });
+      });
+    </script>
+
+    <!-- <script>
+      const productList = document.getElementById("productList");
+      const filterCategory = document.getElementById("filterCategory");
+
+      renderProducts(products);
+
+      filterCategory.addEventListener("change", () => {
+        const category = filterCategory.value;
+
+        if (category === "all") {
+          renderProducts(products);
+        } else {
+          const filtered = products.filter(
+            (p) => p.tag2.toLowerCase() === category.toLowerCase()
+          );
+          renderProducts(filtered);
+        }
+      });
+
+      function renderProducts(data) {
+        productList.innerHTML = "";
+
+        data.forEach((product) => {
+          const card = document.createElement("div");
+          card.classList.add("col-6", "col-md-4", "col-lg-3");
+
+          card.innerHTML = `
       <div class="product-card" onclick="goToDetail('${product.id}')">
         <img src="${product.images[0]}" alt="${product.name}">
         <div class="product-info">
@@ -169,16 +299,13 @@
       </div>
     `;
 
-        productList.appendChild(card);
-      });
-    }
+          productList.appendChild(card);
+        });
+      }
 
-    function goToDetail(id) {
-      window.location.href = "detailProduct.html?id=" + id;
-    }
-
-  </script>
-
-</body>
-
+      function goToDetail(id) {
+        window.location.href = "detailProduct.html?id=" + id;
+      }
+    </script> -->
+  </body>
 </html>

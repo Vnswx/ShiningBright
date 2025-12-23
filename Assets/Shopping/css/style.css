@@ -1,49 +1,145 @@
 body {
   margin: 0;
   padding: 0;
+  padding-top: 10px;
   box-sizing: border-box;
 }
 
-a {
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* kiri dan kanan */
+  align-items: center;
+  padding: 20px 50px;
+  background: white;
+}
+
+.left-nav {
+  display: flex;
+  align-items: center;
+  gap: 140px; /* jarak antara logo dan menu */
+}
+
+nav .cart img {
+  height: 27px; /* ubah sesuai ukuran yang kamu mau */
+  width: auto;
+  cursor: pointer; /* biar keliatan bisa diklik */
+}
+.search {
+  margin-right: 15px;
+}
+
+nav .logo img {
+  height: 25px;
+  width: auto;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 40px; /* jarak antar link */
+}
+
+nav .nav-links a {
+  color: black;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
-/* Ini navbar yaa kawan */
-.navbar {
-  padding: 10px 40px;
-  transition: all 0.3s ease;
-}
-
-.navbar-brand {
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.navbar-brand span {
-  font-weight: 700;
-}
-
-.navbar-nav {
-  margin-left: 90px;
-}
-
-.nav-link {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 0 6px;
-  color: #000 !important;
-}
-
-.icon-group i {
-  font-size: 1.1rem;
-  margin-left: 15px;
+nav .cart {
+  font-size: 1.5rem;
+  color: #fff;
   cursor: pointer;
 }
 
-.navbar.scrolled {
-  background-color: #fff !important;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+/* Search Overlay */
+.search-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Saat aktif (muncul) */
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Box input search */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 30px;
+  width: 50%;
+  max-width: 500px;
+}
+
+/* Input text */
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Tombol close */
+.close-search {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Gambar ikon search di dalam box */
+.search-box img.search-btn {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Hamburger Icon */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: black;
+  cursor: pointer;
+}
+
+/* Ini bagian hero image */
+.hero {
+  width: 88%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: #fff;
+  border: 2px solid #e0e0e0;
+}
+
+.hero img {
+  max-width: 100%; /* supaya lebar gambar tidak melebihi parent-nya */
+  height: auto; /* biar tinggi menyesuaikan proporsi aslinya */
+  display: block; /* hilangkan jarak kosong di bawah gambar */
+  margin: 0 auto; /* kalau mau gambar di tengah */
 }
 
 /* Container */
@@ -184,7 +280,7 @@ h2 {
 }
 
 .related-item {
-  background: #F0F0F0;
+  background: #f0f0f0;
   transition: 0.3s ease;
   cursor: pointer;
   min-height: 270.66px;
@@ -202,7 +298,7 @@ h2 {
 
 .related-info {
   padding: 12px;
-  background: #F0F0F0;
+  background: #f0f0f0;
 }
 
 .related-info h6 {
@@ -225,7 +321,6 @@ h2 {
   font-weight: 600;
   color: #000;
 }
-
 
 /* Ini bagian hero image */
 .hero {
@@ -265,7 +360,7 @@ h2 {
 
 .product-card {
   transition: all 0.3s ease;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   cursor: pointer;
 }
 
@@ -281,7 +376,7 @@ h2 {
 
 .product-info {
   padding: 15px;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
 
 .product-info h6 {
@@ -412,10 +507,8 @@ footer ul li a:hover {
   font-weight: 600;
 }
 
-
 /* Ini bagian responsive */
 @media (max-width: 989px) {
-
   /* Navbar */
   .navbar {
     padding: 10px 50px;
@@ -436,11 +529,9 @@ footer ul li a:hover {
   .hero {
     height: 40vh;
   }
-
 }
 
 @media (max-width: 710px) {
-
   /* Hero */
   .hero {
     height: 30vh;
@@ -452,7 +543,6 @@ footer ul li a:hover {
 }
 
 @media (max-width: 576px) {
-
   /* Navbar */
   .navbar {
     padding: 10px 23px;

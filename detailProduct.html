@@ -1,254 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>detail Product</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="Assets/Shopping/css/style.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Assets/Shopping/css/style.css" />
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                SHINNING<span>BRIGHT.</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html">SHOP</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">NEW ARRIVALS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
-                </ul>
-
-                <div class="d-flex align-items-center icon-group">
-                    <i class="bi bi-search"></i>
-                    <i class="bi bi-bag"></i>
-                </div>
-            </div>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="left-nav">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="Assets/assetnavbarhero/logosb.png"
+              alt="Shinning Bright Logo"
+            />
+          </a>
         </div>
+
+        <!-- <div class="nav-links">
+          <a href="#">SHOP</a>
+          <a href="#">NEW ARRIVALS</a>
+          <a href="#">ABOUT</a>
+          <a href="#">CONTACT</a>
+        </div> -->
+      </div>
+      <div class="cart">
+        <div class="cart2">
+          <img
+            class="search"
+            src="Assets/assetnavbarhero/search.svg"
+            alt="Search Icon"
+          />
+          <img src="Assets/assetnavbarhero/shop.svg" alt="Cart Icon" />
+        </div>
+
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+      </div>
     </nav>
 
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+      <div class="search-box">
+        <input type="text" placeholder="Search our products" />
+        <img
+          class="search-btn"
+          src="Assets/assetnavbarhero/search.svg"
+          alt="Search"
+        />
+        <span class="close-search">&times;</span>
+      </div>
+    </div>
+
     <div class="product-container">
-        <!-- LEFT SIDE -->
-        <div class="left-section">
-            <div class="main-image">
-                <img id="mainImage" src="" alt="">
-            </div>
-
-            <div id="thumbnailList" class="thumbnail-list"></div>
-
+      <!-- LEFT SIDE -->
+      <div class="left-section">
+        <div class="main-image">
+          <img id="mainImage" src="" alt="" />
         </div>
 
-        <div class="right-section">
-            <span id="tag1" class="tag"></span>
-            <span id="tag2" class="tag yellow"></span>
+        <div id="thumbnailList" class="thumbnail-list"></div>
+      </div>
 
-            <h2 id="productName"></h2>
+      <div class="right-section">
+        <span id="tag1" class="tag"></span>
+        <span id="tag2" class="tag yellow"></span>
 
-            <div class="price">
-                <span id="oldPrice" class="old"></span>
-                <span id="newPrice" class="new"></span>
-                <span id="discount" class="discount"></span>
-            </div>
+        <h2 id="productName"></h2>
 
-            <div id="sizeList" class="size-list"></div>
-
-            <div class="size-chart">
-                <h3>Size Chart</h3>
-                <table>
-                    <tr>
-                        <th>Size</th>
-                        <th>S</th>
-                        <th>M</th>
-                        <th>L</th>
-                        <th>XL</th>
-                        <th>XXL</th>
-                    </tr>
-                    <tr>
-                        <td>Length</td>
-                        <td>62</td>
-                        <td>64</td>
-                        <td>66</td>
-                        <td>68</td>
-                        <td>70</td>
-                    </tr>
-                    <tr>
-                        <td>Width</td>
-                        <td>56</td>
-                        <td>58</td>
-                        <td>60</td>
-                        <td>62</td>
-                        <td>64</td>
-                    </tr>
-                    <tr>
-                        <td>Sleeves</td>
-                        <td>50</td>
-                        <td>52</td>
-                        <td>54</td>
-                        <td>56</td>
-                        <td>58</td>
-                    </tr>
-                </table>
-            </div>
+        <div class="price">
+          <span id="oldPrice" class="old"></span>
+          <span id="newPrice" class="new"></span>
+          <span id="discount" class="discount"></span>
         </div>
+
+        <div id="sizeList" class="size-list"></div>
+
+        <div class="size-chart">
+          <h3>Size Chart</h3>
+          <table>
+            <tr>
+              <th>Size</th>
+              <th>S</th>
+              <th>M</th>
+              <th>L</th>
+              <th>XL</th>
+              <th>XXL</th>
+            </tr>
+            <tr>
+              <td>Length</td>
+              <td>62</td>
+              <td>64</td>
+              <td>66</td>
+              <td>68</td>
+              <td>70</td>
+            </tr>
+            <tr>
+              <td>Width</td>
+              <td>56</td>
+              <td>58</td>
+              <td>60</td>
+              <td>62</td>
+              <td>64</td>
+            </tr>
+            <tr>
+              <td>Sleeves</td>
+              <td>50</td>
+              <td>52</td>
+              <td>54</td>
+              <td>56</td>
+              <td>58</td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
 
     <section class="product-section">
-        <h5 style="margin-bottom: 20px;">You Might Also Like</h5>
+      <h5 style="margin-bottom: 20px">You Might Also Like</h5>
 
-        <div class="row g-4" id="relatedList" style="margin-bottom: 130px;"></div>
+      <div class="row g-4" id="relatedList" style="margin-bottom: 130px"></div>
     </section>
-
 
     <!-- Ini footernyaa kawann -->
     <footer>
-        <div class="container footer">
-            <div class="row justify-content-between">
+      <div class="container footer">
+        <div class="row justify-content-between">
+          <div class="col-6 col-md-3 col-lg-2 mb-4">
+            <h6>FEATURES</h6>
+            <ul>
+              <li><a href="#">SHOP</a></li>
+              <li><a href="#">NEW ARRIVALS</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li><a href="#">CONTACT US</a></li>
+            </ul>
+          </div>
 
-                <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <h6>FEATURES</h6>
-                    <ul>
-                        <li><a href="#">SHOP</a></li>
-                        <li><a href="#">NEW ARRIVALS</a></li>
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a href="#">CONTACT US</a></li>
-                    </ul>
-                </div>
+          <div class="col-6 col-md-3 col-lg-2 mb-4">
+            <h6>PRODUK</h6>
+            <ul>
+              <li><a href="#">T-SHIRT</a></li>
+              <li><a href="#">JACKET</a></li>
+              <li><a href="#">SHIRT</a></li>
+              <li><a href="#">HOODIE</a></li>
+              <li><a href="#">CREWNECK</a></li>
+              <li><a href="#">LONG PANTS</a></li>
+              <li><a href="#">UNDERWEAR</a></li>
+            </ul>
+          </div>
 
-                <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <h6>PRODUK</h6>
-                    <ul>
-                        <li><a href="#">T-SHIRT</a></li>
-                        <li><a href="#">JACKET</a></li>
-                        <li><a href="#">SHIRT</a></li>
-                        <li><a href="#">HOODIE</a></li>
-                        <li><a href="#">CREWNECK</a></li>
-                        <li><a href="#">LONG PANTS</a></li>
-                        <li><a href="#">UNDERWEAR</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-12 col-md-4 col-lg-3 mb-4">
-                    <h6>PAYMENT METHOD</h6>
-                    <div class="payment-img">
-                        <img src="Assets/Shopping/img/payment.png" alt="Payment Methods">
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-5 col-lg-4">
-                    <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
-
-                    <h6>FOLLOW ME</h6>
-
-                    <div class="social-icons mb-3">
-                        <i class="bi bi-instagram"></i>
-                        <i class="bi bi-tiktok"></i>
-                        <i class="bi bi-youtube"></i>
-                        <i class="bi bi-facebook"></i>
-                    </div>
-
-                    <div class="contact-info mb-3">
-                        <h6>CONTACT US</h6>
-                        <p>089531432748</p>
-                        <a href="mailto:shinningbright@gmail.com">shinningbright@gmail.com</a>
-                        <hr style="border: 1px solid black; width: 75%; margin-top: 6px;">
-                    </div>
-
-                    <div class="store-info">
-                        <h6>STORE OFFLINE</h6>
-                        <p><strong>Tangerang Selatan</strong></p>
-                        <p>Jl. Jombang Raya No.97, Pd. Pucung,
-                            Kec. Pd. Aren, Kota Tangerang Selatan,
-                            Banten 15227</p>
-                    </div>
-                </div>
+          <div class="col-12 col-md-4 col-lg-3 mb-4">
+            <h6>PAYMENT METHOD</h6>
+            <div class="payment-img">
+              <img
+                src="Assets/Shopping/img/payment.png"
+                alt="Payment Methods"
+              />
             </div>
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4">
+            <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
+
+            <h6>FOLLOW ME</h6>
+
+            <div class="social-icons mb-3">
+              <i class="bi bi-instagram"></i>
+              <i class="bi bi-tiktok"></i>
+              <i class="bi bi-youtube"></i>
+              <i class="bi bi-facebook"></i>
+            </div>
+
+            <div class="contact-info mb-3">
+              <h6>CONTACT US</h6>
+              <p>089531432748</p>
+              <a href="mailto:shinningbright@gmail.com"
+                >shinningbright@gmail.com</a
+              >
+              <hr
+                style="border: 1px solid black; width: 75%; margin-top: 6px"
+              />
+            </div>
+
+            <div class="store-info">
+              <h6>STORE OFFLINE</h6>
+              <p><strong>Tangerang Selatan</strong></p>
+              <p>
+                Jl. Jombang Raya No.97, Pd. Pucung, Kec. Pd. Aren, Kota
+                Tangerang Selatan, Banten 15227
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script src="Assets/Shopping/js/general.js"></script>
     <script src="Assets/Shopping/js/data.js"></script>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get("id");
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get("id");
 
-        const currentProduct = products.find(p => p.id === productId);
+      const currentProduct = products.find((p) => p.id === productId);
 
-        if (!currentProduct) {
-            console.error("Produk tidak ditemukan!");
-        } else {
-            document.getElementById("productName").textContent = currentProduct.name;
-            document.getElementById("oldPrice").textContent = "Rp " + currentProduct.oldPrice.toLocaleString();
-            document.getElementById("newPrice").textContent = "Rp " + currentProduct.newPrice.toLocaleString();
-            document.getElementById("discount").textContent = currentProduct.discount + "%";
+      if (!currentProduct) {
+        console.error("Produk tidak ditemukan!");
+      } else {
+        document.getElementById("productName").textContent =
+          currentProduct.name;
+        document.getElementById("oldPrice").textContent =
+          "Rp " + currentProduct.oldPrice.toLocaleString();
+        document.getElementById("newPrice").textContent =
+          "Rp " + currentProduct.newPrice.toLocaleString();
+        document.getElementById("discount").textContent =
+          currentProduct.discount + "%";
 
-            document.getElementById("tag1").textContent = currentProduct.tag1;
-            document.getElementById("tag2").textContent = currentProduct.tag2;
+        document.getElementById("tag1").textContent = currentProduct.tag1;
+        document.getElementById("tag2").textContent = currentProduct.tag2;
 
-            document.getElementById("mainImage").src = currentProduct.images[0];
+        document.getElementById("mainImage").src = currentProduct.images[0];
 
-            const thumbnailList = document.getElementById("thumbnailList");
-            currentProduct.images.forEach(img => {
-                let thumb = document.createElement("img");
-                thumb.src = img;
-                thumb.onclick = () => document.getElementById("mainImage").src = img;
-                thumbnailList.appendChild(thumb);
-            });
+        const thumbnailList = document.getElementById("thumbnailList");
+        currentProduct.images.forEach((img) => {
+          let thumb = document.createElement("img");
+          thumb.src = img;
+          thumb.onclick = () =>
+            (document.getElementById("mainImage").src = img);
+          thumbnailList.appendChild(thumb);
+        });
 
-            const sizeContainer = document.getElementById("sizeList");
-            sizeContainer.innerHTML = "";
+        const sizeContainer = document.getElementById("sizeList");
+        sizeContainer.innerHTML = "";
 
-            currentProduct.sizes.forEach(item => {
-                const isSoldOut = item.stock === 0;
-                const isLowStock = item.stock > 0 && item.stock <= 3;
+        currentProduct.sizes.forEach((item) => {
+          const isSoldOut = item.stock === 0;
+          const isLowStock = item.stock > 0 && item.stock <= 3;
 
-                const row = document.createElement("div");
-                row.classList.add("size-item");
-                if (isSoldOut) row.classList.add("soldout");
+          const row = document.createElement("div");
+          row.classList.add("size-item");
+          if (isSoldOut) row.classList.add("soldout");
 
-                let stockText = isSoldOut
-                    ? "(Sold Out)"
-                    : isLowStock
-                        ? `(Low Stock: ${item.stock})`
-                        : `(Stock: ${item.stock})`;
+          let stockText = isSoldOut
+            ? "(Sold Out)"
+            : isLowStock
+            ? `(Low Stock: ${item.stock})`
+            : `(Stock: ${item.stock})`;
 
-                row.innerHTML = `
+          row.innerHTML = `
       <span>${item.size}</span>
       <span>Rp ${item.price.toLocaleString()} ${stockText}</span>
       <button ${isSoldOut ? "disabled" : ""}>Buy</button>
     `;
 
-                sizeContainer.appendChild(row);
-            });
+          sizeContainer.appendChild(row);
+        });
 
-            const relatedBox = document.getElementById("relatedList");
+        const relatedBox = document.getElementById("relatedList");
 
-            let related = products.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id);
+        let related = products.filter(
+          (p) =>
+            p.category === currentProduct.category && p.id !== currentProduct.id
+        );
 
-            if (related.length < 6) {
-                const others = products.filter(p => p.id !== currentProduct.id);
-                while (related.length < 6 && related.length < others.length) {
-                    let randomPick = others[Math.floor(Math.random() * others.length)];
-                    if (!related.includes(randomPick)) related.push(randomPick);
-                }
-            }
+        if (related.length < 6) {
+          const others = products.filter((p) => p.id !== currentProduct.id);
+          while (related.length < 6 && related.length < others.length) {
+            let randomPick = others[Math.floor(Math.random() * others.length)];
+            if (!related.includes(randomPick)) related.push(randomPick);
+          }
+        }
 
-            related.slice(0, 8).forEach(item => {
-                let col = document.createElement("div");
-                col.classList.add("col-6", "col-md-3", "col-lg-2");
+        related.slice(0, 8).forEach((item) => {
+          let col = document.createElement("div");
+          col.classList.add("col-6", "col-md-3", "col-lg-2");
 
-                col.innerHTML = `
-      <div class="related-item" onclick="window.location.href='detailProduct.html?id=${item.id}'">
+          col.innerHTML = `
+      <div class="related-item" onclick="window.location.href='detailProduct.html?id=${
+        item.id
+      }'">
         <img src="${item.images[0]}" class="related-img">
         
         <div class="related-info">
@@ -257,12 +296,38 @@
           <p class="new">Rp ${item.newPrice.toLocaleString()}</p>
         </div>
       </div>
-    `; relatedBox.appendChild(col);
-            });
-        }
-
+    `;
+          relatedBox.appendChild(col);
+        });
+      }
     </script>
+    <script>
+      const RECENT_KEY = "recent_products";
+      const MAX_RECENT = 9;
 
-</body>
+      function getRecentProducts() {
+        return JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+      }
 
+      function saveRecentProduct(product) {
+        let recent = getRecentProducts();
+
+        // hapus duplikat
+        recent = recent.filter((item) => item.id !== product.id);
+
+        // masukin ke depan
+        recent.unshift(product);
+
+        // batasi jumlah
+        recent = recent.slice(0, MAX_RECENT);
+
+        localStorage.setItem(RECENT_KEY, JSON.stringify(recent));
+      }
+
+      // ===== SIMPAN PRODUK SAAT DETAIL TERBUKA =====
+      if (currentProduct) {
+        saveRecentProduct(currentProduct);
+      }
+    </script>
+  </body>
 </html>
