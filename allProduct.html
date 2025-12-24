@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Product</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Assets/Shopping/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Product</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="Assets/Shopping/css/style.css" />
-</head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="left-nav">
+        <div class="logo">
+          <a href="index.html">
+            <img
+              src="Assets/assetnavbarhero/logosb.png"
+              alt="Shinning Bright Logo"
+            />
+          </a>
+        </div>
 
-<body>
-  <!-- Navbar -->
-  <nav>
-    <div class="left-nav">
-      <div class="logo">
-        <a href="index.html">
-          <img src="Assets/assetnavbarhero/logosb.png" alt="Shinning Bright Logo" />
-        </a>
-      </div>
-
-      <!-- <div class="nav-links">
+        <!-- <div class="nav-links">
       <a href="#">SHOP</a>
       <a href="#">NEW ARRIVALS</a>
       <a href="#">ABOUT</a>
       <a href="#">CONTACT</a>
     </div> -->
-    </div>
-    <!-- <div class="cart2-mobile">
+      </div>
+      <!-- <div class="cart2-mobile">
         <img
           class="search"
           src="Assets/assetnavbarhero/search.svg"
@@ -39,242 +47,277 @@
           alt="Cart Icon"
         />
       </div> -->
-    <div class="cart">
-      <div class="cart2">
-        <img class="search" src="Assets/assetnavbarhero/search.svg" alt="Search Icon" />
-        <a href="payment.html"><img src="Assets/assetnavbarhero/shop.svg" alt="Cart Icon" /></a>
-        <div class="user-dropdown" id="user-container">
-          <span id="user-display-name" class="hidden" onclick="toggleDropdown()"
-            style="font-weight: bold; color: black; font-size: 15px; cursor: pointer;">
-            <i class="bi bi-chevron-down" style="font-size: 12px; margin-left: 5px;"></i>
-          </span>
+      <div class="cart">
+        <div class="cart2">
+          <img
+            class="search"
+            src="Assets/assetnavbarhero/search.svg"
+            alt="Search Icon"
+          />
+          <a href="payment.html"
+            ><img src="Assets/assetnavbarhero/shop.svg" alt="Cart Icon"
+          /></a>
+          <div class="user-dropdown" id="user-container">
+            <span
+              id="user-display-name"
+              class="hidden"
+              onclick="toggleDropdown()"
+              style="
+                font-weight: bold;
+                color: black;
+                font-size: 15px;
+                cursor: pointer;
+              "
+            >
+              <i
+                class="bi bi-chevron-down"
+                style="font-size: 12px; margin-left: 5px"
+              ></i>
+            </span>
 
-          <div id="dropdown-content" class="dropdown-menu hidden">
-            <a href="profile.html"><i class="bi bi-person"></i> My Profile</a>
-            <hr>
-            <button onclick="logout()" id="logout-btn">
-              <i class="bi bi-box-arrow-right"></i> Logout
-            </button>
+            <div id="dropdown-content" class="dropdown-menu hidden">
+              <a href="profile.html"><i class="bi bi-person"></i> My Profile</a>
+              <hr />
+              <button onclick="logout()" id="logout-btn">
+                <i class="bi bi-box-arrow-right"></i> Logout
+              </button>
+            </div>
           </div>
         </div>
+
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+      </div>
+    </nav>
+
+    <div class="search-overlay">
+      <!-- SEARCH BOX (atas) -->
+      <div class="search-box">
+        <img
+          src="Assets/assetnavbarhero/search.svg"
+          class="search-btn"
+          alt="search"
+        />
+        <input type="text" id="searchInput" placeholder="Search product..." />
+        <span class="close-search">&times;</span>
       </div>
 
-      <div class="menu-toggle" id="menu-toggle">☰</div>
-    </div>
-  </nav>
-
-  <div class="search-overlay">
-    <!-- SEARCH BOX (atas) -->
-    <div class="search-box">
-      <img src="Assets/assetnavbarhero/search.svg" class="search-btn" alt="search" />
-      <input type="text" id="searchInput" placeholder="Search product..." />
-      <span class="close-search">&times;</span>
-    </div>
-
-    <!-- SEARCH RESULT -->
-    <div class="search-result" id="searchResult">
-      <h4>Products</h4>
-      <p class="empty">Type to search products</p>
-    </div>
-
-    <!-- SEARCH CONTENT -->
-    <div class="search-content" id="searchContent">
-      <!-- Popular Search -->
-      <div class="search-section">
-        <h4>Popular Search Terms</h4>
-        <div class="search-tags">
-          <button data-category="T-Shirt">T-Shirt</button>
-          <button data-category="Jacket">Jacket</button>
-          <button data-category="Shirt">Shirt</button>
-          <button data-category="Hoodie">Hoodie</button>
-          <button data-category="Crewneck">Crewneck</button>
-          <button data-category="Jeans">LongPants</button>
-          <button data-category="Underwear">Underwear</button>
-        </div>
+      <!-- SEARCH RESULT -->
+      <div class="search-result" id="searchResult">
+        <h4>Products</h4>
+        <p class="empty">Type to search products</p>
       </div>
 
-      <!-- Recent Viewed -->
-      <div class="search-section">
-        <h4>Recent Viewed</h4>
-        <div class="recent-products" id="recentProducts"></div>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <img src="Assets/assetnavbarhero/logosballproduct.png" alt="Shinning Bright Logo" class="about-logo" />
-  </section>
-  <!-- Kalo ini bagian produk ya sobat -->
-  <section class="product-section">
-    <div class="section-header">
-      <h5>ALL PRODUCT</h5>
-      <select id="filterCategory">
-        <option value="all">ALL PRODUCT</option>
-        <option value="T-Shirt">T-Shirt</option>
-        <option value="Jacket">Jacket</option>
-        <option value="Shirt">Shirt</option>
-        <option value="Hoodie">Hoodie</option>
-        <option value="Crewneck">Crewneck</option>
-        <option value="Jeans">LongPants</option>
-        <option value="Underwear">Underwear</option>
-      </select>
-    </div>
-
-    <div class="row g-4" id="productList" style="margin-bottom: 130px"></div>
-  </section>
-
-
-  <div class="music-card">
-    <div class="music-info">
-      <h4 id="musicTitle">Nosstreess - Pegang tanganku</h4>
-    </div>
-    <div class="music-controls">
-      <button id="prevBtn">⏮</button>
-      <button id="playPauseBtn">⏸</button>
-      <button id="nextBtn">⏭</button>
-    </div>
-
-    <audio id="audioPlayer" src="Assets/music/music.mp3"></audio>
-  </div>
-
-  <!-- Ini footernyaa kawann -->
-  <footer>
-    <div class="container footer">
-      <div class="row justify-content-between">
-        <div class="col-6 col-md-3 col-lg-2 mb-4">
-          <h6>FEATURES</h6>
-          <ul>
-            <li><a href="#">SHOP</a></li>
-            <li><a href="#">NEW ARRIVALS</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">CONTACT US</a></li>
-          </ul>
-        </div>
-
-        <div class="col-6 col-md-3 col-lg-2 mb-4">
-          <h6>PRODUK</h6>
-          <ul>
-            <li><a href="#">T-SHIRT</a></li>
-            <li><a href="#">JACKET</a></li>
-            <li><a href="#">SHIRT</a></li>
-            <li><a href="#">HOODIE</a></li>
-            <li><a href="#">CREWNECK</a></li>
-            <li><a href="#">LONG PANTS</a></li>
-            <li><a href="#">UNDERWEAR</a></li>
-          </ul>
-        </div>
-
-        <div class="col-12 col-md-4 col-lg-3 mb-4">
-          <h6>PAYMENT METHOD</h6>
-          <div class="payment-img">
-            <img src="Assets/Shopping/img/payment.png" alt="Payment Methods" />
+      <!-- SEARCH CONTENT -->
+      <div class="search-content" id="searchContent">
+        <!-- Popular Search -->
+        <div class="search-section">
+          <h4>Popular Search Terms</h4>
+          <div class="search-tags">
+            <button data-category="T-Shirt">T-Shirt</button>
+            <button data-category="Jacket">Jacket</button>
+            <button data-category="Shirt">Shirt</button>
+            <button data-category="Hoodie">Hoodie</button>
+            <button data-category="Crewneck">Crewneck</button>
+            <button data-category="Jeans">LongPants</button>
+            <button data-category="Underwear">Underwear</button>
           </div>
         </div>
 
-        <div class="col-12 col-md-5 col-lg-4">
-          <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
-
-          <h6>FOLLOW ME</h6>
-
-          <div class="social-icons mb-3">
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-tiktok"></i>
-            <i class="bi bi-youtube"></i>
-            <i class="bi bi-facebook"></i>
-          </div>
-
-          <div class="contact-info mb-3">
-            <h6>CONTACT US</h6>
-            <p>089531432748</p>
-            <a href="mailto:shinningbright@gmail.com">shinningbright@gmail.com</a>
-            <hr style="border: 1px solid black; width: 75%; margin-top: 6px" />
-          </div>
-
-          <div class="store-info">
-            <h6>STORE OFFLINE</h6>
-            <p><strong>Tangerang Selatan</strong></p>
-            <p>
-              Jl. Jombang Raya No.97, Pd. Pucung, Kec. Pd. Aren, Kota
-              Tangerang Selatan, Banten 15227
-            </p>
-          </div>
+        <!-- Recent Viewed -->
+        <div class="search-section">
+          <h4>Recent Viewed</h4>
+          <div class="recent-products" id="recentProducts"></div>
         </div>
       </div>
     </div>
-  </footer>
 
-  <script src="Assets/Shopping/js/general.js"></script>
-  <script src="Assets/Shopping/js/data.js"></script>
-  <script src="Assets/Shopping/js/auth.js"></script>
-  <script src="Assets/Shopping/js/search.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <img
+        src="Assets/assetnavbarhero/logosballproduct.png"
+        alt="Shinning Bright Logo"
+        class="about-logo"
+      />
+    </section>
+    <!-- Kalo ini bagian produk ya sobat -->
+    <section class="product-section">
+      <div class="section-header">
+        <h5>ALL PRODUCT</h5>
+        <select id="filterCategory">
+          <option value="all">ALL PRODUCT</option>
+          <option value="T-Shirt">T-Shirt</option>
+          <option value="Jacket">Jacket</option>
+          <option value="Shirt">Shirt</option>
+          <option value="Hoodie">Hoodie</option>
+          <option value="Crewneck">Crewneck</option>
+          <option value="Jeans">LongPants</option>
+          <option value="Underwear">Underwear</option>
+        </select>
+      </div>
 
-  <script>
-    /* ================= 1. FUNGSI GLOBAL (DROPDOWN & RENDER) ================= */
+      <div class="row g-4" id="productList" style="margin-bottom: 130px"></div>
+    </section>
 
-    /* ================= DROPDOWN CONTROL ================= */
-    window.toggleDropdown = function () {
-      const dropdown = document.getElementById("dropdown-content");
-      if (dropdown) {
-        dropdown.classList.toggle("hidden");
+    <div class="music-card">
+      <div class="music-info">
+        <h4 id="musicTitle">Nosstreess - Pegang tanganku</h4>
+      </div>
+      <div class="music-controls">
+        <button id="prevBtn">⏮</button>
+        <button id="playPauseBtn">⏸</button>
+        <button id="nextBtn">⏭</button>
+      </div>
+
+      <audio id="audioPlayer" src="Assets/music/music.mp3"></audio>
+    </div>
+
+    <!-- Ini footernyaa kawann -->
+    <footer>
+      <div class="container footer">
+        <div class="row justify-content-between">
+          <div class="col-6 col-md-3 col-lg-2 mb-4">
+            <h6>FEATURES</h6>
+            <ul>
+              <li><a href="#">SHOP</a></li>
+              <li><a href="#">NEW ARRIVALS</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li><a href="#">CONTACT US</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-2 mb-4">
+            <h6>PRODUK</h6>
+            <ul>
+              <li><a href="#">T-SHIRT</a></li>
+              <li><a href="#">JACKET</a></li>
+              <li><a href="#">SHIRT</a></li>
+              <li><a href="#">HOODIE</a></li>
+              <li><a href="#">CREWNECK</a></li>
+              <li><a href="#">LONG PANTS</a></li>
+              <li><a href="#">UNDERWEAR</a></li>
+            </ul>
+          </div>
+
+          <div class="col-12 col-md-4 col-lg-3 mb-4">
+            <h6>PAYMENT METHOD</h6>
+            <div class="payment-img">
+              <img
+                src="Assets/Shopping/img/payment.png"
+                alt="Payment Methods"
+              />
+            </div>
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4">
+            <h5 class="footer-brand">SHINNING<span>BRIGHT.</span></h5>
+
+            <h6>FOLLOW ME</h6>
+
+            <div class="social-icons mb-3">
+              <i class="bi bi-instagram"></i>
+              <i class="bi bi-tiktok"></i>
+              <i class="bi bi-youtube"></i>
+              <i class="bi bi-facebook"></i>
+            </div>
+
+            <div class="contact-info mb-3">
+              <h6>CONTACT US</h6>
+              <p>089531432748</p>
+              <a href="mailto:shinningbright@gmail.com"
+                >shinningbright@gmail.com</a
+              >
+              <hr
+                style="border: 1px solid black; width: 75%; margin-top: 6px"
+              />
+            </div>
+
+            <div class="store-info">
+              <h6>STORE OFFLINE</h6>
+              <p><strong>Tangerang Selatan</strong></p>
+              <p>
+                Jl. Jombang Raya No.97, Pd. Pucung, Kec. Pd. Aren, Kota
+                Tangerang Selatan, Banten 15227
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="Assets/Shopping/js/general.js"></script>
+    <script src="Assets/Shopping/js/data.js"></script>
+    <script src="Assets/Shopping/js/auth.js"></script>
+    <script src="Assets/Shopping/js/search.js"></script>
+    <script src="/Assets/Homepage/js/landingpage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      /* ================= 1. FUNGSI GLOBAL (DROPDOWN & RENDER) ================= */
+
+      /* ================= DROPDOWN CONTROL ================= */
+      window.toggleDropdown = function () {
+        const dropdown = document.getElementById("dropdown-content");
+        if (dropdown) {
+          dropdown.classList.toggle("hidden");
+        }
+      };
+
+      // Menutup dropdown jika user klik di luar menu
+      window.addEventListener("click", (e) => {
+        const container = document.getElementById("user-container");
+        const dropdown = document.getElementById("dropdown-content");
+        if (container && !container.contains(e.target)) {
+          dropdown?.classList.add("hidden");
+        }
+      });
+
+      /* ================= UI FUNCTIONS ================= */
+      function displayUserInfo() {
+        const auth = JSON.parse(localStorage.getItem(AUTH_KEY));
+        const userNameElement = document.getElementById("user-display-name");
+        const loginLink = document.getElementById("login-link"); // Pastikan ID ini ada di HTML (tombol LOGIN)
+        const logoutBtn = document.getElementById("logout-btn");
+
+        if (auth && auth.isLogin) {
+          // Tampilkan kontainer user (Guest atau User terdaftar)
+          if (userNameElement) {
+            // Kita pertahankan ikon chevron di dalam span
+            userNameElement.innerHTML = `Hi, ${auth.name} <i class="bi bi-chevron-down" style="font-size: 12px; margin-left: 5px;"></i>`;
+            userNameElement.classList.remove("hidden");
+          }
+
+          // Sembunyikan link login
+          if (loginLink) loginLink.classList.add("hidden");
+
+          // Tampilkan tombol logout
+          if (logoutBtn) logoutBtn.classList.remove("hidden");
+        } else {
+          // Jika tidak login
+          if (userNameElement) userNameElement.classList.add("hidden");
+          if (loginLink) loginLink.classList.remove("hidden");
+        }
       }
-    };
 
-    // Menutup dropdown jika user klik di luar menu
-    window.addEventListener("click", (e) => {
-      const container = document.getElementById("user-container");
-      const dropdown = document.getElementById("dropdown-content");
-      if (container && !container.contains(e.target)) {
-        dropdown?.classList.add("hidden");
-      }
-    });
+      function renderProducts(data) {
+        const productList = document.getElementById("productList");
+        if (!productList) return;
 
-    /* ================= UI FUNCTIONS ================= */
-    function displayUserInfo() {
-      const auth = JSON.parse(localStorage.getItem(AUTH_KEY));
-      const userNameElement = document.getElementById("user-display-name");
-      const loginLink = document.getElementById("login-link"); // Pastikan ID ini ada di HTML (tombol LOGIN)
-      const logoutBtn = document.getElementById("logout-btn");
-
-      if (auth && auth.isLogin) {
-        // Tampilkan kontainer user (Guest atau User terdaftar)
-        if (userNameElement) {
-          // Kita pertahankan ikon chevron di dalam span
-          userNameElement.innerHTML = `Hi, ${auth.name} <i class="bi bi-chevron-down" style="font-size: 12px; margin-left: 5px;"></i>`;
-          userNameElement.classList.remove("hidden");
+        productList.innerHTML = "";
+        if (data.length === 0) {
+          productList.innerHTML = `<div class="col-12 text-center"><p>No products found.</p></div>`;
+          return;
         }
 
-        // Sembunyikan link login
-        if (loginLink) loginLink.classList.add("hidden");
-
-        // Tampilkan tombol logout
-        if (logoutBtn) logoutBtn.classList.remove("hidden");
-
-      } else {
-        // Jika tidak login
-        if (userNameElement) userNameElement.classList.add("hidden");
-        if (loginLink) loginLink.classList.remove("hidden");
-      }
-    }
-
-    function renderProducts(data) {
-      const productList = document.getElementById("productList");
-      if (!productList) return;
-
-      productList.innerHTML = "";
-      if (data.length === 0) {
-        productList.innerHTML = `<div class="col-12 text-center"><p>No products found.</p></div>`;
-        return;
-      }
-
-      data.forEach((product) => {
-        const card = document.createElement("div");
-        card.classList.add("col-6", "col-md-4", "col-lg-3");
-        card.innerHTML = `
-          <div class="product-card" onclick="goToDetail('${product.id}')" style="cursor:pointer">
-            <img src="${product.images[0]}" alt="${product.name}" class="img-fluid">
+        data.forEach((product) => {
+          const card = document.createElement("div");
+          card.classList.add("col-6", "col-md-4", "col-lg-3");
+          card.innerHTML = `
+          <div class="product-card" onclick="goToDetail('${
+            product.id
+          }')" style="cursor:pointer">
+            <img src="${product.images[0]}" alt="${
+            product.name
+          }" class="img-fluid">
             <div class="product-info">
               <h6>${product.tag2}</h6>
               <p>${product.name}</p>
@@ -282,62 +325,64 @@
             </div>
           </div>
         `;
-        productList.appendChild(card);
-      });
-    }
-
-    function goToDetail(id) {
-      window.location.href = "detailProduct.html?id=" + id;
-    }
-
-    /* ================= 2. INITIALIZATION (DOM READY) ================= */
-
-    document.addEventListener("DOMContentLoaded", function () {
-      // Jalankan info user login
-      if (typeof displayUserInfo === "function") {
-        displayUserInfo();
-      }
-
-      const filterCategory = document.getElementById("filterCategory");
-
-      // Pastikan variabel 'products' (dari data.js) tersedia
-      if (typeof products === "undefined") {
-        console.error("Data 'products' tidak ditemukan. Pastikan data.js terpanggil.");
-        return;
-      }
-
-      // --- LOGIKA FILTER & URL PARAMS ---
-      const params = new URLSearchParams(window.location.search);
-      const categoryFromUrl = params.get("category");
-
-      if (categoryFromUrl && filterCategory) {
-        filterCategory.value = categoryFromUrl;
-        const filtered = products.filter(
-          (p) => p.tag2.toLowerCase() === categoryFromUrl.toLowerCase()
-        );
-        renderProducts(filtered);
-      } else {
-        renderProducts(products);
-      }
-
-      // --- EVENT LISTENER FILTER ---
-      if (filterCategory) {
-        filterCategory.addEventListener("change", function () {
-          const category = this.value;
-          if (category === "all") {
-            renderProducts(products);
-          } else {
-            const filtered = products.filter(
-              (p) => p.tag2.toLowerCase() === category.toLowerCase()
-            );
-            renderProducts(filtered);
-          }
+          productList.appendChild(card);
         });
       }
-    });
-  </script>
 
-  <!-- <script>
+      function goToDetail(id) {
+        window.location.href = "detailProduct.html?id=" + id;
+      }
+
+      /* ================= 2. INITIALIZATION (DOM READY) ================= */
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Jalankan info user login
+        if (typeof displayUserInfo === "function") {
+          displayUserInfo();
+        }
+
+        const filterCategory = document.getElementById("filterCategory");
+
+        // Pastikan variabel 'products' (dari data.js) tersedia
+        if (typeof products === "undefined") {
+          console.error(
+            "Data 'products' tidak ditemukan. Pastikan data.js terpanggil."
+          );
+          return;
+        }
+
+        // --- LOGIKA FILTER & URL PARAMS ---
+        const params = new URLSearchParams(window.location.search);
+        const categoryFromUrl = params.get("category");
+
+        if (categoryFromUrl && filterCategory) {
+          filterCategory.value = categoryFromUrl;
+          const filtered = products.filter(
+            (p) => p.tag2.toLowerCase() === categoryFromUrl.toLowerCase()
+          );
+          renderProducts(filtered);
+        } else {
+          renderProducts(products);
+        }
+
+        // --- EVENT LISTENER FILTER ---
+        if (filterCategory) {
+          filterCategory.addEventListener("change", function () {
+            const category = this.value;
+            if (category === "all") {
+              renderProducts(products);
+            } else {
+              const filtered = products.filter(
+                (p) => p.tag2.toLowerCase() === category.toLowerCase()
+              );
+              renderProducts(filtered);
+            }
+          });
+        }
+      });
+    </script>
+
+    <!-- <script>
       const productList = document.getElementById("productList");
       const filterCategory = document.getElementById("filterCategory");
 
@@ -382,6 +427,5 @@
         window.location.href = "detailProduct.html?id=" + id;
       }
     </script> -->
-</body>
-
+  </body>
 </html>

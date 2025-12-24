@@ -19,12 +19,12 @@ nav {
   background: white;
 }
 
-.navbar.search-active {
+/* .navbar.search-active {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
+} */
 
 .left-nav {
   display: flex;
@@ -66,13 +66,13 @@ nav .cart {
   cursor: pointer;
 }
 
-nav.navbar {
+/* nav.navbar {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   z-index: 10;
-}
+} */
 
 /* Search Overlay */
 .search-overlay {
@@ -760,7 +760,7 @@ footer {
     padding: 20px 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 9999;
   }
 
   .nav .nav-links {
@@ -1133,6 +1133,12 @@ footer {
     height: auto;
     max-width: 100%;
   } */
+  .new-arrivals-hero .image img {
+    max-width: 100%; /* supaya lebar gambar tidak melebihi parent-nya */
+    height: auto; /* biar tinggi menyesuaikan proporsi aslinya */
+    display: block; /* hilangkan jarak kosong di bawah gambar */
+    margin: 0 auto; /* kalau mau gambar di tengah */
+  }
 
   /* Product list mobile grid */
   .product-card {
@@ -1248,7 +1254,7 @@ footer {
   top: 100%;
   background-color: white;
   min-width: 150px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 10px 0;
   margin-top: 10px;
@@ -1256,7 +1262,8 @@ footer {
 }
 
 /* Item di dalam dropdown */
-.dropdown-menu a, .dropdown-menu button {
+.dropdown-menu a,
+.dropdown-menu button {
   display: block;
   padding: 10px 15px;
   width: 100%;
@@ -1269,7 +1276,8 @@ footer {
   cursor: pointer;
 }
 
-.dropdown-menu a:hover, .dropdown-menu button:hover {
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
   background-color: #f5f5f5;
 }
 
