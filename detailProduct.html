@@ -13,6 +13,22 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="Assets/Shopping/css/style.css" />
+    <style>
+      .star-rating {
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+      .star-rating .star {
+        color: #ddd; /* Warna bintang kosong */
+        transition: color 0.2s;
+      }
+      .star-rating .star.active {
+        color: #ffc107; /* Warna kuning emas */
+      }
+      .star-rating .star:hover {
+        color: #ffdb70;
+      }
+    </style>
   </head>
 
   <body>
@@ -147,6 +163,23 @@
         <span id="tag2" class="tag yellow"></span>
 
         <h2 id="productName"></h2>
+        <div class="review-section mt-4">
+          <h6>Product Review</h6>
+          <div class="star-rating" id="starRating">
+            <i class="bi bi-star-fill star" data-value="1"></i>
+            <i class="bi bi-star-fill star" data-value="2"></i>
+            <i class="bi bi-star-fill star" data-value="3"></i>
+            <i class="bi bi-star-fill star" data-value="4"></i>
+            <i class="bi bi-star-fill star" data-value="5"></i>
+            <span id="ratingValue" class="ms-2 text-muted">(0/5)</span>
+          </div>
+          <p
+            id="reviewStatus"
+            style="font-size: 0.8rem; color: green; display: none"
+          >
+            Thank you for your rating!
+          </p>
+        </div>
 
         <div class="price">
           <span id="oldPrice" class="old"></span>
@@ -395,6 +428,63 @@
     </script>
 
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll(".star-rating .star");
+        const ratingValueText = document.getElementById("ratingValue");
+        const reviewStatus = document.getElementById("reviewStatus");
+
+        // Ambil rating lama dari localStorage jika ada (berdasarkan ID produk)
+        const savedRating = localStorage.getItem(`rating_${productId}`);
+        if (savedRating) {
+          updateStars(savedRating);
+          ratingValueText.textContent = `(${savedRating}/5)`;
+        }
+
+        stars.forEach((star) => {
+          // Efek saat mouse masuk (hover)
+          star.addEventListener("mouseover", function () {
+            const value = this.getAttribute("data-value");
+            highlightStars(value);
+          });
+
+          // Efek saat mouse keluar (reset ke rating yang dipilih)
+          star.addEventListener("mouseout", function () {
+            const currentSelected =
+              localStorage.getItem(`rating_${productId}`) || 0;
+            updateStars(currentSelected);
+          });
+
+          // Logika saat bintang diklik
+          star.addEventListener("click", function () {
+            const value = this.getAttribute("data-value");
+            localStorage.setItem(`rating_${productId}`, value); // Simpan ke local storage
+            updateStars(value);
+            ratingValueText.textContent = `(${value}/5)`;
+
+            // Tampilkan pesan terima kasih
+            reviewStatus.style.display = "block";
+            setTimeout(() => {
+              reviewStatus.style.display = "none";
+            }, 3000);
+          });
+        });
+
+        function highlightStars(value) {
+          stars.forEach((s) => {
+            s.classList.toggle("active", s.getAttribute("data-value") <= value);
+          });
+        }
+
+        function updateStars(value) {
+          stars.forEach((s) => {
+            if (s.getAttribute("data-value") <= value) {
+              s.classList.add("active");
+            } else {
+              s.classList.remove("active");
+            }
+          });
+        }
+      });
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get("id");
       const currentProduct =
